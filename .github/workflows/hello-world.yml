@@ -7,7 +7,7 @@ permissions: {}
 jobs:
   hello-world-job:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "$(cat hello_world.txt)"
@@ -37,6 +37,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Load configs from file
           # LINTER_RULES_PATH: config/lint
+          # FILTER_REGEX_INCLUDE: (^|/)src/
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_PYTHON_BLACK: true
+          VALIDATE_HTML: true
 
       - name: Commit and push linting fixes
         # Run only on:
